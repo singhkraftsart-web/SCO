@@ -1,0 +1,6 @@
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { blogs } from '@/data/content';
+import { absoluteUrl } from '@/lib/site';
+export const metadata: Metadata = { title: 'Spoken English Blog for Indian Learners', description: 'SEO blog with English speaking tips, interview English, daily-use sentences, office communication, and beginner lessons.', alternates: { canonical: absoluteUrl('/blog') } };
+export default function BlogIndex() { return <section className="section"><div className="mx-auto max-w-7xl container-px"><p className="text-sm font-black uppercase tracking-[.24em] text-sky">SEO Blog</p><h1 className="mt-3 text-4xl font-black text-navy dark:text-white">Spoken English Learning Blog</h1><p className="mt-4 max-w-3xl text-slate-600 dark:text-slate-300">Category-based blog architecture for topical authority, internal linking, related posts, breadcrumbs, and long-tail organic traffic.</p><div className="mt-10 grid gap-6 md:grid-cols-3">{blogs.map((blog) => <Link key={blog.slug} href={`/blog/${blog.slug}`} className="card hover:border-sky"><span className="text-sm font-bold text-sky">{blog.category} • {blog.readTime}</span><h2 className="mt-3 text-2xl font-black text-navy dark:text-white">{blog.title}</h2><p className="mt-3 text-slate-600 dark:text-slate-300">{blog.description}</p></Link>)}</div></div></section>; }

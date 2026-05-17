@@ -1,0 +1,4 @@
+import type { MetadataRoute } from 'next';
+import { blogs, cities, landingPages } from '@/data/content';
+import { absoluteUrl } from '@/lib/site';
+export default function sitemap(): MetadataRoute.Sitemap { const now = new Date(); return [{ url: absoluteUrl('/'), lastModified: now, changeFrequency: 'weekly' as const, priority: 1 }, { url: absoluteUrl('/blog'), lastModified: now, changeFrequency: 'weekly' as const, priority: 0.8 }, ...landingPages.map((p) => ({ url: absoluteUrl(`/${p.slug}`), lastModified: now, changeFrequency: 'weekly' as const, priority: 0.9 })), ...cities.map((c) => ({ url: absoluteUrl(`/spoken-english-classes-in-${c.toLowerCase()}`), lastModified: now, changeFrequency: 'weekly' as const, priority: 0.8 })), ...blogs.map((b) => ({ url: absoluteUrl(`/blog/${b.slug}`), lastModified: now, changeFrequency: 'monthly' as const, priority: 0.7 })) ]; }
